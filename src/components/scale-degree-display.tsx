@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { TRIADS } from "../constants";
+import {
+  LOWER_STRINGS_TRIAD_LABEL,
+  TRIADS,
+  UPPER_STRINGS_TRIAD_LABEL,
+} from "../constants";
 import { getDiminishedDegree } from "../functions";
 import { useAppSelector } from "../app/hooks";
 
@@ -18,7 +22,10 @@ const ScaleDegreeDisplay = () => {
         newScaleDegree = Math.floor(Math.random() * 7) + 1;
       } while (!includeDiminished && newScaleDegree === diminishedDegree);
 
-      const triadStringLevel = Math.random() < 0.5 ? "↑" : "↓";
+      const triadStringLevel =
+        Math.random() < 0.5
+          ? UPPER_STRINGS_TRIAD_LABEL
+          : LOWER_STRINGS_TRIAD_LABEL;
 
       setScaleDegree(
         `${trainingMode === TRIADS ? triadStringLevel : ""}${newScaleDegree}`,
