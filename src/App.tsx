@@ -8,10 +8,12 @@ import UpdateFrequencyDisplay from "./components/update-frequency-display";
 function App() {
   return (
     <div className="main-div">
-      <ScaleDegreeDisplay />
       <div className="controls-panel-div">
         <ChordQualitySelector />
         <UpdateFrequencyDisplay />
+      </div>
+      <ScaleDegreeDisplay />
+      <div className="controls-panel-div">
         <DiminishedSelector />
         <TrainingModeSelector />
       </div>
