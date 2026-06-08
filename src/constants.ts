@@ -23,6 +23,9 @@ export const CONVERT_TO_SEC_COEFFICIENT = 1000;
 
 export const INCREASE_FREQ_LABEL = "↓";
 export const DECREASE_FREQ_LABEL = "↑";
-
+// TODO: remove
 export const LOWER_STRINGS_TRIAD_LABEL = "↓";
 export const UPPER_STRINGS_TRIAD_LABEL = "↑";
+
+export const SCALE_DEGREES = [1, 2, 3, 4, 5, 6, 7];
+export const TRIAD_OPTIONS = ["↓", "↑"];
