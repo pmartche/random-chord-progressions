@@ -1,45 +1,34 @@
-import { useEffect, useState } from "react";
-import {
-  LOWER_STRINGS_TRIAD_LABEL,
-  TRIADS,
-  UPPER_STRINGS_TRIAD_LABEL,
-} from "../constants";
-import { getDiminishedDegree } from "../functions";
+import { useEffect, useRef, useState } from "react";
+import { getScaleDegreeOutput } from "../functions";
 import { useAppSelector } from "../app/hooks";
 
 const ScaleDegreeDisplay = () => {
   const { chordQuality, includeDiminished, updateFrequency, trainingMode } =
-    useAppSelector((state) => state.scaleDegree);
-  const [scaleDegree, setScaleDegree] = useState("");
+    useAppSelector(({ scaleDegree }) => scaleDegree);
+  const [output, setOutput] = useState("");
+  const outputRef = useRef("");
 
   useEffect(() => {
-    const diminishedDegree = getDiminishedDegree(chordQuality);
-
-    const generateScaleDegree = () => {
-      let newScaleDegree: number;
-
-      do {
-        newScaleDegree = Math.floor(Math.random() * 7) + 1;
-      } while (!includeDiminished && newScaleDegree === diminishedDegree);
-
-      const triadStringLevel =
-        Math.random() < 0.5
-          ? UPPER_STRINGS_TRIAD_LABEL
-          : LOWER_STRINGS_TRIAD_LABEL;
-
-      setScaleDegree(
-        `${trainingMode === TRIADS ? triadStringLevel : ""}${newScaleDegree}`,
+    const generateOutput = () => {
+      const newOutput = getScaleDegreeOutput(
+        chordQuality,
+        includeDiminished,
+        trainingMode,
+        outputRef.current,
       );
+
+      outputRef.current = newOutput;
+      setOutput(newOutput);
     };
 
-    generateScaleDegree();
+    generateOutput();
 
-    const interval = setInterval(generateScaleDegree, updateFrequency);
+    const interval = setInterval(generateOutput, updateFrequency);
 
     return () => clearInterval(interval);
   }, [chordQuality, includeDiminished, updateFrequency, trainingMode]);
 
-  return <div className="scale-degree-display">{scaleDegree}</div>;
+  return <div className="scale-degree-display">{output}</div>;
 };
 
 export default ScaleDegreeDisplay;
