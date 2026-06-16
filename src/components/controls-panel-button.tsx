@@ -4,11 +4,7 @@ import type {
   ActionCreatorWithPayload,
 } from "@reduxjs/toolkit";
 import { useAppDispatch } from "../app/hooks";
-
-type ControlsPanelButtonProps<P = unknown> =
-  | { label: string; action: ActionCreatorWithoutPayload; payload?: never }
-  | { label: string; action: ActionCreatorWithPayload<P>; payload: P }
-  | { label: string; action: ActionCreatorWithOptionalPayload<P>; payload?: P };
+import type { ControlsPanelButtonProps } from "../types";
 
 const ControlsPanelButton = <P,>({
   label,
