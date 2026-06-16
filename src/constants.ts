@@ -1,16 +1,20 @@
-// training modes
+// Training modes
 export const CHORDS = "Chords";
 export const TRIADS = "Triads";
-export const TRAINING_MODES = [CHORDS, TRIADS];
+export const TRAINING_MODES = [CHORDS, TRIADS] as const;
 
-// chord qualities
+// Chord qualities
 export const MAJOR = "Major";
 export const MINOR = "Minor";
-export const CHORD_QUALITIES = [MAJOR, MINOR];
+export const CHORD_QUALITIES = [MAJOR, MINOR] as const;
 
-// diminished scale degrees
+// Diminished scale degrees
 export const DIMINISHED_DEGREE_OF_MAJOR = 7;
 export const DIMINISHED_DEGREE_OF_MINOR = 2;
+export const DIMINISHED_DEGREES = [
+  DIMINISHED_DEGREE_OF_MAJOR,
+  DIMINISHED_DEGREE_OF_MINOR,
+] as const;
 export const DIMINISHED_INCLUDED_LABEL = "Dimin. Included";
 export const DIMINISHED_EXCLUDED_LABEL = "Dimin. Excluded";
 export const INCLUDE_DIMINISHED_LABEL = "Include";
@@ -29,3 +33,10 @@ export const UPPER_STRINGS_TRIAD_LABEL = "↑";
 
 export const SCALE_DEGREES = [1, 2, 3, 4, 5, 6, 7];
 export const TRIAD_OPTIONS = ["↓", "↑"];
+
+// Keyboard Navigation
+export const TOGGLE_CHORD_QUALITY_KEY = "c";
+export const TOGGLE_DIMINISHED_KEY = "d";
+export const TOGGLE_TRAINING_MODE = "t";
+export const DECREASE_FREQUENCY_KEY = "ArrowUp";
+export const INCREASE_FREQUENCY_KEY = "ArrowDown";

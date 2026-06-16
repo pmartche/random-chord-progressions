@@ -23,3 +23,5 @@ export const VALUE_TO_OMIT = "2";
 
 export const MIN_MATH_RANDOM_VALUE = 0;
 export const MAX_MATH_RANDOM_VALUE = 1 - 2 ** -53;
+
+export const NEXT_ITEM_TEST_ARRAY = [1, 2];
