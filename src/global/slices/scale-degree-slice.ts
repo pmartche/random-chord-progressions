@@ -8,6 +8,7 @@ import {
 } from "../../constants";
 import type { chordQuality, InitialState, trainingMode } from "../../types";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { getNextChordQuality, getNextTrainingMode } from "../../functions";
 
 const initialState: InitialState = {
   chordQuality: MAJOR,
@@ -23,11 +24,17 @@ export const scaleDegreeSlice = createSlice({
     changeChordQuality: (state, action: PayloadAction<chordQuality>) => {
       state.chordQuality = action.payload;
     },
+    setNextChordQuality: (state) => {
+      state.chordQuality = getNextChordQuality(state.chordQuality);
+    },
     includeDiminished: (state) => {
       state.includeDiminished = true;
     },
     excludeDiminished: (state) => {
       state.includeDiminished = false;
+    },
+    toggleDiminished: (state) => {
+      state.includeDiminished = !state.includeDiminished;
     },
     increaseFrequency: (state) => {
       const { updateFrequency } = state;
@@ -42,16 +49,22 @@ export const scaleDegreeSlice = createSlice({
     changeTrainingMode: (state, action: PayloadAction<trainingMode>) => {
       state.trainingMode = action.payload;
     },
+    setNextTrainingMode: (state) => {
+      state.trainingMode = getNextTrainingMode(state.trainingMode);
+    },
   },
 });
 
 export const {
   changeChordQuality,
+  setNextChordQuality,
   includeDiminished,
   excludeDiminished,
+  toggleDiminished,
   increaseFrequency,
   decreaseFrequency,
   changeTrainingMode,
+  setNextTrainingMode,
 } = scaleDegreeSlice.actions;
 
 export default scaleDegreeSlice.reducer;

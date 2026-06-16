@@ -4,6 +4,7 @@ import {
   INITIALIZE_OPTIONS_EXCLUDE_DIMINISHED_TEST_CASES,
   MAX_MATH_RANDOM_VALUE,
   MIN_MATH_RANDOM_VALUE,
+  NEXT_ITEM_TEST_ARRAY,
   VALUE_TO_OMIT,
 } from "./functions.test-data";
 import type { chordQuality } from "./types";
@@ -11,11 +12,16 @@ import {
   getDiminishedDegree,
   getScaleDegreeOutput,
   getScaleDegreeOptions,
+  getNextChordQuality,
+  getNextTrainingMode,
+  getNextItemInArray,
 } from "./functions";
 import {
+  CHORD_QUALITIES,
   CHORDS,
   MAJOR,
   SCALE_DEGREES,
+  TRAINING_MODES,
   TRIAD_OPTIONS,
   TRIADS,
 } from "./constants";
@@ -28,7 +34,7 @@ describe("getDiminishedDegree", () => {
   );
 });
 
-describe("initializeOptions", () => {
+describe("getScaleDegreeOptions", () => {
   it('returns all scale degrees in "Chords" mode with diminished', () => {
     expect(getScaleDegreeOptions(MAJOR, true, CHORDS)).toEqual(
       SCALE_DEGREES.map((degree) => degree.toString()),
@@ -101,5 +107,55 @@ describe("getScaleDegreeOutput", () => {
         valueToOmit,
       ),
     ).toEqual(SCALE_DEGREES[1].toString());
+  });
+});
+
+describe("getNextItemInArray", () => {
+  it("returns the next item in an array when the current item is not last in the array", () => {
+    const currentItem = NEXT_ITEM_TEST_ARRAY[0];
+
+    expect(getNextItemInArray(NEXT_ITEM_TEST_ARRAY, currentItem)).toEqual(
+      NEXT_ITEM_TEST_ARRAY[1],
+    );
+  });
+
+  it("returns the first item in an array when the current item is last in the array", () => {
+    const currentItem = NEXT_ITEM_TEST_ARRAY[NEXT_ITEM_TEST_ARRAY.length - 1];
+
+    expect(getNextItemInArray(NEXT_ITEM_TEST_ARRAY, currentItem)).toEqual(
+      NEXT_ITEM_TEST_ARRAY[0],
+    );
+  });
+});
+
+describe("getNextChordQuality", () => {
+  it("returns the next item in `CHORD_QUALITIES` array when the current item is not last in the array", () => {
+    const currentChordQuality = CHORD_QUALITIES[0];
+
+    expect(getNextChordQuality(currentChordQuality)).toEqual(
+      CHORD_QUALITIES[1],
+    );
+  });
+
+  it("returns the first item in `CHORD_QUALITIES` array when the current item is last in the array", () => {
+    const currentChordQuality = CHORD_QUALITIES[CHORD_QUALITIES.length - 1];
+
+    expect(getNextChordQuality(currentChordQuality)).toEqual(
+      CHORD_QUALITIES[0],
+    );
+  });
+});
+
+describe("getNextTrainingMode", () => {
+  it("returns the next item in `TRAINING_MODES` array when the current item is not last in the array", () => {
+    const currentTrainingMode = TRAINING_MODES[0];
+
+    expect(getNextTrainingMode(currentTrainingMode)).toEqual(TRAINING_MODES[1]);
+  });
+
+  it("returns the first item in `TRAINING_MODES` array when the current item is last in the array", () => {
+    const currentTrainingMode = TRAINING_MODES[TRAINING_MODES.length - 1];
+
+    expect(getNextTrainingMode(currentTrainingMode)).toEqual(TRAINING_MODES[0]);
   });
 });
