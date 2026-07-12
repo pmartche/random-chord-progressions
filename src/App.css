@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.main-div {
+.main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,11 +17,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  box-sizing: border-box;
   height: 15vh;
   width: 20vw;
-  font-size: 2vw;
   border: solid;
   border-radius: var(--border-radius);
+}
+
+.controls-fieldset-wrapper {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.controls-panel-output {
+  font-size: 2vw;
 }
 
 .controls-panel-button {
@@ -46,4 +56,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

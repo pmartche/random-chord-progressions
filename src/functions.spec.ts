@@ -7,7 +7,7 @@ import {
   NEXT_ITEM_TEST_ARRAY,
   VALUE_TO_OMIT,
 } from "./functions.test-data";
-import type { chordQuality } from "./types";
+import type { ChordQuality } from "./types";
 import {
   getDiminishedDegree,
   getScaleDegreeOutput,
@@ -29,7 +29,7 @@ import {
 describe("getDiminishedDegree", () => {
   it.each(CHORD_TO_DIM_DEGREE_TEST_CASES)(
     "returns chord degree %s as the diminished degree of the %s scale",
-    (diminishedDegree: number, chordQuality: chordQuality) =>
+    (diminishedDegree: number, chordQuality: ChordQuality) =>
       expect(getDiminishedDegree(chordQuality)).toEqual(diminishedDegree),
   );
 });
@@ -53,7 +53,7 @@ describe("getScaleDegreeOptions", () => {
 
   it.each(INITIALIZE_OPTIONS_EXCLUDE_DIMINISHED_TEST_CASES)(
     "omits the %s degree (diminished) from results in %s scale",
-    (diminishedDegree: number, chordQuality: chordQuality) =>
+    (diminishedDegree: number, chordQuality: ChordQuality) =>
       expect(getScaleDegreeOptions(chordQuality, false, CHORDS)).not.toContain(
         diminishedDegree.toString(),
       ),

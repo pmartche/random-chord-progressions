@@ -1,23 +1,23 @@
 import "./App.css";
+import ScaleDegreeDisplay from "./components/scale-degree-display";
 import ChordQualitySelector from "./components/chord-quality-selector";
 import DiminishedSelector from "./components/diminished-selector";
-import ScaleDegreeDisplay from "./components/scale-degree-display";
 import TrainingModeSelector from "./components/training-mode-selector";
-import UpdateFrequencyDisplay from "./components/update-frequency-display";
+import UpdateFrequencySelector from "./components/update-frequency-selector";
 
 function App() {
   return (
-    <div className="main-div">
+    <main className="main">
       <div className="controls-panel-div">
         <ChordQualitySelector />
-        <UpdateFrequencyDisplay />
+        <UpdateFrequencySelector />
       </div>
       <ScaleDegreeDisplay />
       <div className="controls-panel-div">
         <DiminishedSelector />
         <TrainingModeSelector />
       </div>
-    </div>
+    </main>
   );
 }
 
