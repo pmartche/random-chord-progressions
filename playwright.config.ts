@@ -3,6 +3,8 @@ import { loadTestEnv } from "./e2e/helpers/load-env";
 
 loadTestEnv();
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4173";
+
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
@@ -12,7 +14,7 @@ export default defineConfig({
   reporter: "html",
 
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4173",
+    baseURL,
     trace: "on-first-retry",
   },
 
@@ -54,7 +56,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: "npm run dev -- --host 127.0.0.1 --port 4173",
-    url: process.env.VITE_APP_TITLE,
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

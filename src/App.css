@@ -52,7 +52,7 @@
   align-items: center;
 }
 
-.controls-panel-div {
+.controls-panel-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

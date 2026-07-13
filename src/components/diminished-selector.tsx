@@ -1,7 +1,7 @@
 import { useAppSelector } from "../app/hooks";
 import {
-  CHORD_QUALITY_ARIA_LABEL,
-  CHORD_QUALITY_LEGEND,
+  DIMINISHED_DEGREE_ARIA_LABEL,
+  DIMINISHED_DEGREE_LEGEND,
   DIMINISHED_EXCLUDED_LABEL,
   DIMINISHED_INCLUDED_LABEL,
   EXCLUDE_DIMINISHED_LABEL,
@@ -21,11 +21,11 @@ const DiminishedSelector = () => {
   );
   const selectorProps = useMemo<OptionsSelectorProps>(
     () => ({
-      screenReaderLegend: CHORD_QUALITY_LEGEND,
+      screenReaderLegend: DIMINISHED_DEGREE_LEGEND,
       output: includeDiminished
         ? DIMINISHED_INCLUDED_LABEL
         : DIMINISHED_EXCLUDED_LABEL,
-      ariaLabel: CHORD_QUALITY_ARIA_LABEL,
+      ariaLabel: DIMINISHED_DEGREE_ARIA_LABEL,
       buttonPropsArray: [
         {
           buttonLabel: INCLUDE_DIMINISHED_LABEL,
