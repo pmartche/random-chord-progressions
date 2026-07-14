@@ -10,24 +10,24 @@ import {
   TRIAD_OPTIONS,
   TRIADS,
 } from "./constants";
-import type { chordQuality, diminishedDegree, trainingMode } from "./types";
+import type { ChordQuality, DiminishedDegree, TrainingMode } from "./types";
 
 const chordQualityToDiminishedDegreeMapper: Record<
-  chordQuality,
-  diminishedDegree
+  ChordQuality,
+  DiminishedDegree
 > = {
   [MAJOR]: DIMINISHED_DEGREE_OF_MAJOR,
   [MINOR]: DIMINISHED_DEGREE_OF_MINOR,
 };
 
 export const getDiminishedDegree = (
-  chordQuality: chordQuality,
-): diminishedDegree => chordQualityToDiminishedDegreeMapper[chordQuality];
+  chordQuality: ChordQuality,
+): DiminishedDegree => chordQualityToDiminishedDegreeMapper[chordQuality];
 // TODO: provide return type
 export const getScaleDegreeOptions = (
-  chordQuality: chordQuality,
+  chordQuality: ChordQuality,
   includeDiminished: boolean,
-  trainingMode: trainingMode,
+  trainingMode: TrainingMode,
 ) => {
   const degreeToOmit = includeDiminished
     ? null
@@ -52,9 +52,9 @@ export const getScaleDegreeOptions = (
 };
 // TODO: provide return type
 export const getScaleDegreeOutput = (
-  chordQuality: chordQuality,
+  chordQuality: ChordQuality,
   includeDiminished: boolean,
-  trainingMode: trainingMode,
+  trainingMode: TrainingMode,
   valueToOmit: string,
 ) => {
   let options: string[] = getScaleDegreeOptions(
@@ -79,8 +79,8 @@ export const getNextItemInArray = <T>(
   return items[(index + 1) % items.length];
 };
 
-export const getNextChordQuality = (chordQuality: chordQuality): chordQuality =>
+export const getNextChordQuality = (chordQuality: ChordQuality): ChordQuality =>
   getNextItemInArray(CHORD_QUALITIES, chordQuality);
 
-export const getNextTrainingMode = (trainingMode: trainingMode): trainingMode =>
+export const getNextTrainingMode = (trainingMode: TrainingMode): TrainingMode =>
   getNextItemInArray(TRAINING_MODES, trainingMode);

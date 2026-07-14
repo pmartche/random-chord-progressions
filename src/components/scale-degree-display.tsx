@@ -6,6 +6,11 @@ import type { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 import {
   DECREASE_FREQUENCY_KEY,
   INCREASE_FREQUENCY_KEY,
+  SCALE_DEGREE_DATA_TEST_ID,
+  SCALE_DEGREE_HEADING,
+  SCALE_DEGREE_HEADING_ID,
+  SCALE_DEGREE_OUTPUT_ARIA_LABEL,
+  SCALE_DEGREE_SECTION_ARIA_LABELLEDBY,
   TOGGLE_CHORD_QUALITY_KEY,
   TOGGLE_DIMINISHED_KEY,
   TOGGLE_TRAINING_MODE,
@@ -66,7 +71,22 @@ const ScaleDegreeDisplay = () => {
     return () => clearInterval(interval);
   }, [chordQuality, includeDiminished, updateFrequency, trainingMode]);
 
-  return <div className="scale-degree-display">{output}</div>;
+  return (
+    <section
+      className="scale-degree-display"
+      aria-labelledby={SCALE_DEGREE_SECTION_ARIA_LABELLEDBY}
+    >
+      <h2 id={SCALE_DEGREE_HEADING_ID} className="sr-only">
+        {SCALE_DEGREE_HEADING}
+      </h2>
+      <output
+        aria-label={SCALE_DEGREE_OUTPUT_ARIA_LABEL}
+        data-testid={SCALE_DEGREE_DATA_TEST_ID}
+      >
+        {output}
+      </output>
+    </section>
+  );
 };
 
 export default ScaleDegreeDisplay;

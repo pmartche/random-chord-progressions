@@ -7,9 +7,10 @@ import { useAppDispatch } from "../app/hooks";
 import type { ControlsPanelButtonProps } from "../types";
 
 const ControlsPanelButton = <P,>({
-  label,
+  buttonLabel,
   action,
   payload,
+  ariaPressed,
 }: ControlsPanelButtonProps<P>) => {
   const dispatch = useAppDispatch();
 
@@ -38,9 +39,10 @@ const ControlsPanelButton = <P,>({
     <button
       className="controls-panel-button"
       type="button"
+      aria-pressed={ariaPressed}
       onClick={handleClick}
     >
-      {label}
+      {buttonLabel}
     </button>
   );
 };

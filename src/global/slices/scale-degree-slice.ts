@@ -6,7 +6,7 @@ import {
   MIN_UPDATE_FREQUENCY,
   UPDATE_FREQUENCY_INCREMENT,
 } from "../../constants";
-import type { chordQuality, InitialState, trainingMode } from "../../types";
+import type { ChordQuality, InitialState, TrainingMode } from "../../types";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { getNextChordQuality, getNextTrainingMode } from "../../functions";
 
@@ -21,7 +21,7 @@ export const scaleDegreeSlice = createSlice({
   name: "scaleDegree",
   initialState,
   reducers: {
-    changeChordQuality: (state, action: PayloadAction<chordQuality>) => {
+    changeChordQuality: (state, action: PayloadAction<ChordQuality>) => {
       state.chordQuality = action.payload;
     },
     setNextChordQuality: (state) => {
@@ -46,7 +46,7 @@ export const scaleDegreeSlice = createSlice({
     decreaseFrequency: (state) => {
       state.updateFrequency += MIN_UPDATE_FREQUENCY;
     },
-    changeTrainingMode: (state, action: PayloadAction<trainingMode>) => {
+    changeTrainingMode: (state, action: PayloadAction<TrainingMode>) => {
       state.trainingMode = action.payload;
     },
     setNextTrainingMode: (state) => {
