@@ -4,16 +4,16 @@ import {
   MAJOR,
   MINOR,
 } from "./constants";
-import type { chordQuality } from "./types";
+import type { ChordQuality } from "./types";
 
-export const CHORD_TO_DIM_DEGREE_TEST_CASES: [number, chordQuality][] = [
+export const CHORD_TO_DIM_DEGREE_TEST_CASES: [number, ChordQuality][] = [
   [DIMINISHED_DEGREE_OF_MAJOR, MAJOR],
   [DIMINISHED_DEGREE_OF_MINOR, MINOR],
 ];
 
 export const INITIALIZE_OPTIONS_EXCLUDE_DIMINISHED_TEST_CASES: [
   number,
-  chordQuality,
+  ChordQuality,
 ][] = [
   [DIMINISHED_DEGREE_OF_MAJOR, MAJOR],
   [DIMINISHED_DEGREE_OF_MINOR, MINOR],

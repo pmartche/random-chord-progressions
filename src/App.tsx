@@ -1,23 +1,27 @@
 import "./App.css";
+import ScaleDegreeDisplay from "./components/scale-degree-display";
 import ChordQualitySelector from "./components/chord-quality-selector";
 import DiminishedSelector from "./components/diminished-selector";
-import ScaleDegreeDisplay from "./components/scale-degree-display";
 import TrainingModeSelector from "./components/training-mode-selector";
-import UpdateFrequencyDisplay from "./components/update-frequency-display";
+import UpdateFrequencySelector from "./components/update-frequency-selector";
+import { APP_TITLE, APP_TITLE_ID } from "./constants";
 
 function App() {
   return (
-    <div className="main-div">
-      <div className="controls-panel-div">
+    <main className="main" aria-labelledby={APP_TITLE_ID}>
+      <h1 id={APP_TITLE_ID} className="sr-only">
+        {APP_TITLE}
+      </h1>
+      <div className="controls-panel-column">
         <ChordQualitySelector />
-        <UpdateFrequencyDisplay />
+        <UpdateFrequencySelector />
       </div>
       <ScaleDegreeDisplay />
-      <div className="controls-panel-div">
+      <div className="controls-panel-column">
         <DiminishedSelector />
         <TrainingModeSelector />
       </div>
-    </div>
+    </main>
   );
 }
 
