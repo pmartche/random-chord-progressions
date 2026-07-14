@@ -1,5 +1,12 @@
 import test, { expect } from "@playwright/test";
-import { CHORD_QUALITY_ARIA_LABEL, MAJOR, MINOR } from "../src/constants";
+import {
+  CHORD_QUALITY_ARIA_LABEL,
+  MAJOR,
+  MINOR,
+  TOGGLE_CHORD_QUALITY_KEY,
+} from "../src/constants";
+
+test.describe.configure({ mode: "parallel" });
 
 test("updates chord quality display when a chord quality button is pressed", async ({
   page,
@@ -16,5 +23,27 @@ test("updates chord quality display when a chord quality button is pressed", asy
   await expect(chordQualityOutput).toHaveText(MAJOR);
 
   await minorScaleButton.click();
+  await expect(chordQualityOutput).toHaveText(MINOR);
+
+  await page.keyboard.press(TOGGLE_CHORD_QUALITY_KEY);
+  await expect(chordQualityOutput).toHaveText(MAJOR);
+
+  await page.keyboard.press(TOGGLE_CHORD_QUALITY_KEY);
+  await expect(chordQualityOutput).toHaveText(MINOR);
+});
+
+test("updates chord quality output on keyboard hotkeys", async ({ page }) => {
+  await page.goto("/");
+
+  const chordQualityOutput = page.getByLabel(CHORD_QUALITY_ARIA_LABEL);
+  const minorScaleButton = page.getByRole("button", { name: MINOR });
+
+  await minorScaleButton.click();
+  await expect(chordQualityOutput).toHaveText(MINOR);
+
+  await page.keyboard.press(TOGGLE_CHORD_QUALITY_KEY);
+  await expect(chordQualityOutput).toHaveText(MAJOR);
+
+  await page.keyboard.press(TOGGLE_CHORD_QUALITY_KEY);
   await expect(chordQualityOutput).toHaveText(MINOR);
 });
