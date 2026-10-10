@@ -84,3 +84,5 @@ export const SCALE_DEGREE_DATA_TEST_ID = "current-scale-degree";
 
 export const APP_TITLE_ID = "app-title";
 export const APP_TITLE = "Random Chord Progressions";
+
+export const SIDEBAR_BUTTON_TEXT = "☰";

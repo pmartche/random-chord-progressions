@@ -14,7 +14,7 @@ import {
 import type { OptionsSelectorProps } from "../types";
 import OptionsSelector from "./options-selector";
 
-const UpdateFrequencySelector = () => {
+const IntervalSelector = () => {
   const { updateFrequency } = useAppSelector(({ scaleDegree }) => scaleDegree);
   const freqInSec = String(updateFrequency / CONVERT_TO_SEC_COEFFICIENT);
   const selectorProps = useMemo<OptionsSelectorProps>(
@@ -39,4 +39,4 @@ const UpdateFrequencySelector = () => {
   return <OptionsSelector {...selectorProps} />;
 };
 
-export default UpdateFrequencySelector;
+export default IntervalSelector;

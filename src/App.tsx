@@ -1,10 +1,8 @@
 import "./App.css";
 import ScaleDegreeDisplay from "./components/scale-degree-display";
-import ChordQualitySelector from "./components/chord-quality-selector";
-import DiminishedSelector from "./components/diminished-selector";
-import TrainingModeSelector from "./components/training-mode-selector";
-import UpdateFrequencySelector from "./components/update-frequency-selector";
 import { APP_TITLE, APP_TITLE_ID } from "./constants";
+import Sidebar from "./components/sidebar";
+import SidebarButton from "./components/sidebar-button";
 
 function App() {
   return (
@@ -12,15 +10,9 @@ function App() {
       <h1 id={APP_TITLE_ID} className="sr-only">
         {APP_TITLE}
       </h1>
-      <div className="controls-panel-column">
-        <ChordQualitySelector />
-        <UpdateFrequencySelector />
-      </div>
+      <SidebarButton />
+      <Sidebar />
       <ScaleDegreeDisplay />
-      <div className="controls-panel-column">
-        <DiminishedSelector />
-        <TrainingModeSelector />
-      </div>
     </main>
   );
 }
