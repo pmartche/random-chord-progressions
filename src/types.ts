@@ -19,7 +19,8 @@ type ScreenReaderLegend = (typeof SCREEN_READER_LEGENDS)[number];
 type AriaLabel = (typeof ARIA_LABELS)[number];
 type ButtonLabel = (typeof BUTTON_LABELS)[number];
 
-export type InitialState = {
+export type DegreeSliceState = {
+  isSidebarOpen: boolean;
   chordQuality: ChordQuality;
   includeDiminished: boolean;
   updateFrequency: number;

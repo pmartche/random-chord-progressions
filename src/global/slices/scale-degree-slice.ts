@@ -6,11 +6,12 @@ import {
   MIN_UPDATE_FREQUENCY,
   UPDATE_FREQUENCY_INCREMENT,
 } from "../../constants";
-import type { ChordQuality, InitialState, TrainingMode } from "../../types";
+import type { ChordQuality, DegreeSliceState, TrainingMode } from "../../types";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { getNextChordQuality, getNextTrainingMode } from "../../functions";
 
-const initialState: InitialState = {
+const initialState: DegreeSliceState = {
+  isSidebarOpen: false,
   chordQuality: MAJOR,
   includeDiminished: true,
   updateFrequency: DEFAULT_UPDATE_FREQUENCY,
@@ -21,6 +22,9 @@ export const scaleDegreeSlice = createSlice({
   name: "scaleDegree",
   initialState,
   reducers: {
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
     changeChordQuality: (state, action: PayloadAction<ChordQuality>) => {
       state.chordQuality = action.payload;
     },
@@ -56,6 +60,7 @@ export const scaleDegreeSlice = createSlice({
 });
 
 export const {
+  toggleSidebar,
   changeChordQuality,
   setNextChordQuality,
   includeDiminished,
