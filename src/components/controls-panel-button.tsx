@@ -40,7 +40,6 @@ const ControlsPanelButton = <P,>({
       className="controls-panel-button"
       type="button"
       aria-pressed={ariaPressed}
-      disabled={ariaPressed}
       onClick={handleClick}
     >
       {buttonLabel}

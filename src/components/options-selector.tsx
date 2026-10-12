@@ -9,7 +9,7 @@ const OptionsSelector = ({
 }: OptionsSelectorProps) => {
   return (
     <fieldset className="controls-fieldset-wrapper">
-      <legend className="sr-only">{screenReaderLegend}</legend>
+      <legend className="controls-panel-legend">{screenReaderLegend}</legend>
       <div className="controls-panel">
         <output className="controls-panel-output" aria-label={ariaLabel}>
           {output}

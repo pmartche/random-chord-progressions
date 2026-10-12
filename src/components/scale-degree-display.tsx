@@ -76,15 +76,22 @@ const ScaleDegreeDisplay = () => {
       className="scale-degree-display"
       aria-labelledby={SCALE_DEGREE_SECTION_ARIA_LABELLEDBY}
     >
-      <h2 id={SCALE_DEGREE_HEADING_ID} className="sr-only">
+      <div className="degree-halo" aria-hidden="true">
+        <span className="halo-ring halo-ring-outer" />
+        <span className="halo-ring halo-ring-inner" />
+        <span className="halo-center" />
+      </div>
+      <h2 id={SCALE_DEGREE_HEADING_ID} className="degree-heading">
         {SCALE_DEGREE_HEADING}
       </h2>
       <output
+        className="degree-output"
         aria-label={SCALE_DEGREE_OUTPUT_ARIA_LABEL}
         data-testid={SCALE_DEGREE_DATA_TEST_ID}
       >
         {output}
       </output>
+      <p className="degree-caption">A new idea, one chord at a time.</p>
     </section>
   );
 };
